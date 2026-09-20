@@ -4,67 +4,138 @@
     box-sizing: border-box;
 }
 
+
 body {
-    background-color: rgb(63, 63, 63);
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: gray;
 }
 
-.config-container {    
-    font-size: 36px;
-    color: aliceblue;
-    background-color: rgb(226, 67, 67);
-    border-radius: 20px;
-    padding: 3rem;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.mainbody {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#game-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-display {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+.word-display .letter {
+    width: 28px;
+    font-size: 2rem;
+    font-weight: 600;
     text-align: center;
-    width: 70%;
+    border-bottom: 3px solid aliceblue;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-.option-label {
-    padding: 10px 0px;
+.word-display .letter.guessed {
+    border-color: transparent;
+    margin: -10px 0 5px;
 }
 
-.option-label labelX {
-    display: inline-block;
-    width: 150px;
-    text-align: right;
+.container {   
+    width: 80%;
+    background: rgb(226, 67, 67);
+    padding: 60px 40px;
+    border-radius: 10px;
+    gap: 70px;
+    align-items: flex-end;
 }
 
-.option-label input {
-    font-size: 30px;
+.container h4 {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
 }
 
-.config-container button {
-    padding: 5px;
-    font-size: 30px;
+.container h4 span {
+    font-weight: 600;
 }
 
 .hidden {
     display: none;
 }
 
-.hang-letter {
-    width: 28px;
-    border-bottom: 3px solid aliceblue;
+.guess-box {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.guess-box input {
+    font-size: 2rem;
+    font-weight: 400;
 }
 
-.uncovered-letter {
-    color: black;
-    margin: 4px;
+.guess-counter {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 20px;
 }
 
-.revealed-letter {
-    border-bottom: none;
-    width: auto;
-    margin: 0px 1px;
+.guess-counter input {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
-#word-label-letters {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hint-text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 20px;
 }
+
+.phrase-box {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.start-div {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.start-div button {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.hint-text input {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.phrase-box input {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
 

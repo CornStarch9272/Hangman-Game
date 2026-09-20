@@ -8,37 +8,44 @@
     
 </head>
 <body>
-    <div class="config-container">
-        <div id="reset-button" class="hidden">
-            <button onclick="resetGame()">RESET</button>
+    <div class="header">
+        <h1>Hangman Game</h1>
+    </div>
+    <br>
+    <div class="mainbody">
+    <div class="container">
+        <div id="reset-button">
+            <button onclick="resetGame()">
+                <img src="./icons/restart_icon.svg" style="height: 24px; width: 24px;">
+            </button>
         </div>
-        <div>
-            <h1>Hangman Game</h1>
-        </div>
-        <div class="option-label">
-            <label>HINT:</label>
+        <div class="hint-text">
+            HINT:
             <input type="text" id="hint-input" name="hint_label" placeholder="Enter hint...">
+            <b id="hint-tex" class="hidden">Water</b>
         </div>
-        <div class="option-label" id="full-word-element">
+        <div class="phrase-box" id="full-word-element">
             <label id="phrase-label">PHRASE:</label>
             <input type="text" id="word-input" name="word_label" placeholder="Enter phrase...">
         </div>
-        <div class="option-label hidden" id="word-label-letters"></div>
-        <div class="option-label hidden" id="enter-guess-div">
+        <div id="game-box" class="hidden"></div>
+        <div class="guess-box hidden" id="enter-guess-div">
             <label>GUESS:</label>
             <input type="text" id="enter-guess-input" name="enter_label" size="1" maxlength="1">
         </div>
-        <div class="option-label">
+        <div class="guess-counter">
             <input type="number" id="num-guess-element" name="guess_label" size="1" maxlength="2" value="7">
+            <span id="num-guess-text" class="hidden">7</span>
             <label>WRONG GUESSES LEFT</label>
         </div>
-        <div class="option-label" id="wrong-guesses-element">
+        <h4 class="" id="wrong-guesses-element">
             <span style="color: aliceblue;">&#128511;</span>
             <span id="wrong-guess-input" name="wrong_guess_label"></span>
-        </div>
-        <div id="start-game-button">
+        </h4>
+        <div id="start-game-button" class="start-div">
             <button onclick="startGame()">START GAME</button>
         </div>
+    </div>
     </div>
     <script src="app.js"></script>
 </body>

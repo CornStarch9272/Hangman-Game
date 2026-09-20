@@ -4,18 +4,18 @@ const fullWordElement = document.getElementById('full-word-element');
 const fullWordInput = document.getElementById('word-input');
 const phraseLabel = document.getElementById('phrase-label');
 const hintInput = document.getElementById('hint-input');
+const hintText = document.getElementById('hint-tex');
 const enterGuessDiv = document.getElementById('enter-guess-div');
 const enterGuessInput = document.getElementById('enter-guess-input');
 const numGuessElement = document.getElementById('num-guess-element');
-const lettersElement = document.getElementById('word-label-letters');
+const lettersElement = document.getElementById('game-box');
 const wrongGuessesDiv = document.getElementById('wrong-guesses-element');
 const wrongGuessInput = document.getElementById('wrong-guess-input');
-var letterArray = [];
 
 function startGame() {
     setStartGameHiddenStatus();
     enterGuessInput.value = '';
-    letterArray = fullWordInput.value.split("");
+    hintText.textContent = hintInput.value;
     createLetters();
 }
 
@@ -26,13 +26,37 @@ function resetGame() {
 }
 
 function createLetters() {
-    for (let index = 0; index < letterArray.length; index++) {
-        const letter = letterArray[index];
+    let words = fullWordInput.value.split(" ");
+    console.log(words);
+    for (let index = 0; index < words.length; index++) {
+        const word = words[index];
+        let letterArray = word.split("");
+        const list = document.createElement("ul");
+        list.classList.add("word-display");
+        for (let index = 0; index < letterArray.length; index++) {
+            const letter = letterArray[index];
+            if (/^[A-Za-z]+$/.test(letter)) {
+                const newSpan = document.createElement("li");
+                newSpan.classList.add('letter');
+                newSpan.classList.add('uncovered-letter');
+                newSpan.innerText = letter;
+                list.appendChild(newSpan);
+            }
+            else {
+                const newSpan = document.createElement("li");
+                newSpan.classList.add('letter');
+                newSpan.classList.add('special-character');
+                newSpan.innerText = letter;
+                list.appendChild(newSpan);
+            }
+        }
+        lettersElement.appendChild(list)
+        /*
         const newSpan = document.createElement("span");
-        newSpan.classList.add('hang-letter');
-        newSpan.classList.add('uncovered-letter');
-        newSpan.innerText = letter;
+        newSpan.classList.add('special-character');
+        newSpan.innerText = " ";
         lettersElement.appendChild(newSpan);
+        */
     }
 }
 
@@ -44,20 +68,26 @@ function setStartGameHiddenStatus() {
     startGameButton.classList.add('hidden');
     phraseLabel.classList.add('hidden');
     fullWordElement.classList.add('hidden');
-    resetButton.classList.remove('hidden');
+    //resetButton.classList.remove('hidden');
     enterGuessDiv.classList.remove('hidden')
     lettersElement.classList.remove('hidden');
     wrongGuessesDiv.classList.remove('hidden');
+
+    hintInput.classList.add('hidden')
+    hintText.classList.remove('hidden')
 }
 
 function setResetGameHiddenStatus() {
-    resetButton.classList.add('hidden');
+    //resetButton.classList.add('hidden');
     enterGuessDiv.classList.add('hidden');
     lettersElement.classList.add('hidden');
     wrongGuessesDiv.classList.add('hidden');
     startGameButton.classList.remove('hidden');
     fullWordElement.classList.remove('hidden');
     phraseLabel.classList.remove('hidden');
+
+    hintInput.classList.remove('hidden')
+    hintText.classList.add('hidden')
 }
 
 function resetFields() {
@@ -70,7 +100,7 @@ function resetFields() {
 
 function checkGuess(guess) {
     enterGuessInput.value = '';
-    correctGuesses = [];
+    if (/^[A-Za-z]+$/.test(guess) == false) return;
     if (letterArray.indexOf(guess) > -1) {
         for (let index = 0; index < letterArray.length; index++) {
             const letter = letterArray[index];
@@ -83,7 +113,7 @@ function checkGuess(guess) {
     else {
         if (wrongGuessInput.textContent.indexOf(guess) < 0) {
             wrongGuessInput.textContent += guess;
-            var curGuesses = parseInt(numGuessElement.value);
+            let curGuesses = parseInt(numGuessElement.value);
             curGuesses = curGuesses - 1;
             numGuessElement.value = curGuesses.toString();
         }
@@ -103,3 +133,5 @@ enterGuessInput.addEventListener("keypress", function(event) {
         checkGameStatus();
     }
 }); 
+
+window.onload = resetGame;
