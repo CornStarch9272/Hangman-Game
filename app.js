@@ -89,7 +89,7 @@ function setResetGameHiddenStatus() {
 }
 
 function resetFields() {
-    //fullWordInput.value = '';
+    fullWordInput.value = '';
     hintInput.value = '';
     enterGuessInput.value = '';
     numGuessElement.value = '7';
@@ -131,7 +131,6 @@ function checkGameStatus() {
 
     const letters = document.getElementsByClassName("letter").length;
     const guessed = document.getElementsByClassName("guessed").length;
-    //const special = document.getElementsByClassName("special").length;
     if (letters - guessed <= 0) {
         gameOver(true)
     }
@@ -155,4 +154,4 @@ enterGuessInput.addEventListener("keypress", function(event) {
     }
 }); 
 
-window.onload = resetGame;
+//window.onload = resetGame;
