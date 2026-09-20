@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="config-container">
+        <div id="reset-button" class="hidden">
+            <button onclick="resetGame()">RESET</button>
+        </div>
+        <div>
+            <h1>Hangman Game</h1>
+        </div>
+        <div class="option-label">
+            <label>HINT:</label>
+            <input type="text" id="hint-input" name="hint_label" placeholder="Enter hint...">
+        </div>
+        <div class="option-label" id="full-word-element">
+            <label id="phrase-label">PHRASE:</label>
+            <input type="text" id="word-input" name="word_label" placeholder="Enter phrase...">
+        </div>
+        <div class="option-label hidden" id="word-label-letters"></div>
+        <div class="option-label hidden" id="enter-guess-div">
+            <label>GUESS:</label>
+            <input type="text" id="enter-guess-input" name="enter_label" size="1" maxlength="1">
+        </div>
+        <div class="option-label">
+            <input type="number" id="num-guess-element" name="guess_label" size="1" maxlength="2" value="7">
+            <label>WRONG GUESSES LEFT</label>
+        </div>
+        <div class="option-label" id="wrong-guesses-element">
+            <span style="color: aliceblue;">&#128511;</span>
+            <span id="wrong-guess-input" name="wrong_guess_label"></span>
+        </div>
+        <div id="start-game-button">
+            <button onclick="startGame()">START GAME</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

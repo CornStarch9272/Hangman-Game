@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(63, 63, 63);
+}
+
+.config-container {    
+    font-size: 36px;
+    color: aliceblue;
+    background-color: rgb(226, 67, 67);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 70%;
+}
+
+.option-label {
+    padding: 10px 0px;
+}
+
+.option-label labelX {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+.option-label input {
+    font-size: 30px;
+}
+
+.config-container button {
+    padding: 5px;
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.hang-letter {
+    width: 28px;
+    border-bottom: 3px solid aliceblue;
+}
+
+.uncovered-letter {
+    color: black;
+    margin: 4px;
+}
+
+.revealed-letter {
+    border-bottom: none;
+    width: auto;
+    margin: 0px 1px;
+}
+
+#word-label-letters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
