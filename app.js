@@ -27,7 +27,6 @@ function resetGame() {
 
 function createLetters() {
     let words = fullWordInput.value.split(" ");
-    console.log(words);
     for (let index = 0; index < words.length; index++) {
         const word = words[index];
         let letterArray = word.split("");
@@ -51,12 +50,6 @@ function createLetters() {
             }
         }
         lettersElement.appendChild(list)
-        /*
-        const newSpan = document.createElement("span");
-        newSpan.classList.add('special-character');
-        newSpan.innerText = " ";
-        lettersElement.appendChild(newSpan);
-        */
     }
 }
 
@@ -99,27 +92,30 @@ function resetFields() {
 }
 
 function checkGuess(guess) {
+    const phrase = fullWordInput.value.toUpperCase();
+    const words = phrase.split(" ");
+    const curGuess = guess.toUpperCase();
     enterGuessInput.value = '';
-    if (/^[A-Za-z]+$/.test(guess) == false) return;
-    if (letterArray.indexOf(guess) > -1) {
-        for (let index = 0; index < letterArray.length; index++) {
-            const letter = letterArray[index];
-            if (letter == guess) {
-                lettersElement.childNodes[index].classList.remove('uncovered-letter');
-                lettersElement.childNodes[index].classList.add('revealed-letter');
+    let correct = false;
+    if (/^[A-Z]+$/.test(curGuess) == false) return;
+    for (let i1 = 0; i1 < words.length; i1++) {
+        const word = words[i1];
+        if (word.indexOf(curGuess) > -1) {
+            for (let i2 = 0; i2 < word.length; i2++) {
+                const letter = word[i2];
+                if (letter == curGuess) {
+                    lettersElement.childNodes[i1].childNodes[i2].classList.add('guessed');
+                    correct = true;
+                }
             }
         }
     }
-    else {
-        if (wrongGuessInput.textContent.indexOf(guess) < 0) {
-            wrongGuessInput.textContent += guess;
+    if (correct == false && wrongGuessInput.textContent.indexOf(curGuess) < 0) {
+            wrongGuessInput.textContent += curGuess;
             let curGuesses = parseInt(numGuessElement.value);
             curGuesses = curGuesses - 1;
             numGuessElement.value = curGuesses.toString();
-        }
     }
-
-    // check game over or win
 }
 
 function checkGameStatus() {
