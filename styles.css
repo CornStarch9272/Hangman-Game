@@ -53,6 +53,16 @@ body {
     color: transparent;
 }
 
+.word-display .special {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+}
+
 .word-display .letter.guessed {
     border-color: transparent;
     color: aliceblue;
@@ -136,6 +146,82 @@ body {
     font-weight: 500;
     text-align: center;
     margin-bottom: 15px;
+}
+
+.game-mode {
+    position: fixed;
+    color: black;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.4s ease;
+}
+
+.game-mode.show {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 999;
+}
+
+.game-mode .game-over {
+    background: aliceblue;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.game-mode .game-over-img {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.game-mode h4 {
+    font-size: 1.5rem;
+}
+
+.game-mode p {
+    font-size: 1.1rem;
+    margin: 15px 0 30px;
+    font-weight: 500;
+}
+
+.game-mode p b {
+    font-weight: 600;
+}
+
+.game-mode button {
+    display: block;
+    margin: auto;
+    width: 48px;
+}
+
+@media(max-width: 800px) {
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .header {
+        font-size: 1rem;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    #game-box, .phrase-box, .hint-text, .guess-counter {
+        padding-bottom: 0px;
+    }
 }
 
 

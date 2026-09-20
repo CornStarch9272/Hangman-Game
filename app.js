@@ -11,8 +11,14 @@ const numGuessElement = document.getElementById('num-guess-element');
 const lettersElement = document.getElementById('game-box');
 const wrongGuessesDiv = document.getElementById('wrong-guesses-element');
 const wrongGuessInput = document.getElementById('wrong-guess-input');
+const gameOverElement = document.getElementById('game-over-screen');
 
 function startGame() {
+    if (fullWordInput.value == "") {
+        alert("Enter Phrase");
+        return;
+    }
+
     setStartGameHiddenStatus();
     enterGuessInput.value = '';
     hintText.textContent = hintInput.value;
@@ -37,14 +43,12 @@ function createLetters() {
             if (/^[A-Za-z]+$/.test(letter)) {
                 const newSpan = document.createElement("li");
                 newSpan.classList.add('letter');
-                newSpan.classList.add('uncovered-letter');
                 newSpan.innerText = letter;
                 list.appendChild(newSpan);
             }
             else {
                 const newSpan = document.createElement("li");
-                newSpan.classList.add('letter');
-                newSpan.classList.add('special-character');
+                newSpan.classList.add('special');
                 newSpan.innerText = letter;
                 list.appendChild(newSpan);
             }
@@ -78,9 +82,10 @@ function setResetGameHiddenStatus() {
     startGameButton.classList.remove('hidden');
     fullWordElement.classList.remove('hidden');
     phraseLabel.classList.remove('hidden');
-
     hintInput.classList.remove('hidden')
     hintText.classList.add('hidden')
+
+    gameOverElement.classList.remove("show");
 }
 
 function resetFields() {
@@ -119,7 +124,27 @@ function checkGuess(guess) {
 }
 
 function checkGameStatus() {
+    const curGuesses = parseInt(numGuessElement.value);
+    if (curGuesses <= 0) {
+        gameOver(false)
+    }
 
+    const letters = document.getElementsByClassName("letter").length;
+    const guessed = document.getElementsByClassName("guessed").length;
+    //const special = document.getElementsByClassName("special").length;
+    if (letters - guessed <= 0) {
+        gameOver(true)
+    }
+}
+
+function gameOver(victory) {
+    setTimeout(() => {
+        const victoryText = victory ? "You Are Winner!" : "You Are Loser";
+        gameOverElement.querySelector("img").src = `./icons/${victory ? 'winner.gif' : 'loser.jpg'}`;
+        gameOverElement.querySelector("h4").textContent = victoryText;
+        gameOverElement.querySelector("b").textContent = fullWordInput.value;
+        gameOverElement.classList.add("show");
+    }, 300);
 }
 
 enterGuessInput.addEventListener("keypress", function(event) {

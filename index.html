@@ -8,6 +8,16 @@
     
 </head>
 <body>
+    <div id="game-over-screen" class="game-mode">
+        <div class="game-over">
+            <img src="./icons/winner.gif" class="game-over-img" alt="SCORE">
+            <h4 id="score-text">You Are Winner!</h4>
+            <p>The correct phrase was: <b id="game-over-word">juicy</b></p>
+            <button onclick="resetGame()">
+                <img src="./icons/restart_icon.svg" class="restart-img" style="height: 24px; width: 24px;">
+            </button>
+        </div>
+    </div>
     <div class="header">
         <h1>Hangman Game</h1>
     </div>
