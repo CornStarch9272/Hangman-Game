@@ -41,10 +41,13 @@
         <div id="game-box" class="hidden"></div>
         <div class="guess-box hidden" id="enter-guess-div">
             <label>GUESS:</label>
-            <input type="text" id="enter-guess-input" name="enter_label" size="1" maxlength="1">
+            <input type="text" id="enter-guess-input" class="single-input" name="enter_label" size="1" maxlength="1">
+            <button class="enter-btn" onclick="clickTakeGuessBtn()">
+                <img src="./icons/guess.svg" style="height: 24px; width: 24px;">
+            </button>
         </div>
         <div class="guess-counter">
-            <input type="number" id="num-guess-element" name="guess_label" size="1" maxlength="2" value="7">
+            <input type="number" id="num-guess-element" class="single-input" name="guess_label" size="1" maxlength="2" value="7">
             <span id="num-guess-text" class="hidden">7</span>
             <label>WRONG GUESSES LEFT</label>
         </div>

@@ -43,7 +43,7 @@ function createLetters() {
             if (/^[A-Za-z]+$/.test(letter)) {
                 const newSpan = document.createElement("li");
                 newSpan.classList.add('letter');
-                newSpan.innerText = letter;
+                newSpan.innerText = "M";
                 list.appendChild(newSpan);
             }
             else {
@@ -96,8 +96,12 @@ function resetFields() {
     wrongGuessInput.textContent = '';
 }
 
+function clickTakeGuessBtn() {
+    checkGuess(enterGuessInput.value);
+}
+
 function checkGuess(guess) {
-    const phrase = fullWordInput.value.toUpperCase();
+    const phrase = fullWordInput.value;
     const words = phrase.split(" ");
     const curGuess = guess.toUpperCase();
     enterGuessInput.value = '';
@@ -105,10 +109,11 @@ function checkGuess(guess) {
     if (/^[A-Z]+$/.test(curGuess) == false) return;
     for (let i1 = 0; i1 < words.length; i1++) {
         const word = words[i1];
-        if (word.indexOf(curGuess) > -1) {
+        if (word.toUpperCase().indexOf(curGuess) > -1) {
             for (let i2 = 0; i2 < word.length; i2++) {
                 const letter = word[i2];
-                if (letter == curGuess) {
+                if (letter.toUpperCase() == curGuess) {
+                    lettersElement.childNodes[i1].childNodes[i2].innerText = letter;
                     lettersElement.childNodes[i1].childNodes[i2].classList.add('guessed');
                     correct = true;
                 }
