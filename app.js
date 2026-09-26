@@ -98,6 +98,7 @@ function resetFields() {
 
 function clickTakeGuessBtn() {
     checkGuess(enterGuessInput.value);
+    checkGameStatus();
 }
 
 function checkGuess(guess) {
